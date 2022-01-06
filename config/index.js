@@ -1,11 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-12-30 10:41:21
- * @LastEditTime: 2021-12-30 15:11:51
- * @LastEditors: your name
+ * @LastEditTime: 2022-01-06 15:09:09
+ * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \taro_demo\config\index.js
  */
+const path = require("path");
+
 const config = {
   projectName: "taro_demo",
   date: "2021-12-30",
@@ -16,9 +18,16 @@ const config = {
     828: 1.81 / 2,
   },
   sourceRoot: "src",
-  outputRoot: "dist",
+  outputRoot: `dist/${process.env.TARO_ENV}`,
   plugins: ["@tarojs/plugin-html"],
   defineConstants: {},
+  alias: {
+    "@/pages": path.resolve(__dirname, "..", "src/pages"),
+    "@/components": path.resolve(__dirname, "..", "src/components"),
+    "@/models": path.resolve(__dirname, "..", "src/models"),
+    "@/utils": path.resolve(__dirname, "..", "src/utils"),
+    "@/config": path.resolve(__dirname, "..", "src/config"),
+  },
   copy: {
     patterns: [],
     options: {},
